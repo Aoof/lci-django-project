@@ -17,12 +17,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import RedirectView
 from .views import accueil
 from .views import contact
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path("", RedirectView.as_view(url="/accueil/", permanent=False)),
     path("admin/", admin.site.urls),
     path("accueil/", accueil),
     path("contact/", contact),
